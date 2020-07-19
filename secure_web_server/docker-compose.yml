@@ -1,0 +1,32 @@
+version: '3'
+
+
+services: 
+    reverse_proxy:
+        image: img_nginx30 
+        ports:
+            - 80:80
+        volumes:
+            - logs:/var/logs/nginx
+            - glitch_conf:/etc/nginx/conf.d/glitch.conf
+        networks: 
+            - front_end_net
+            - back_end_net 
+    
+
+
+    back_end_server:
+        image: 
+        ports: 
+        volumes: 
+            - glitch:/www/website/glitch
+        networks: 
+            - back_end_net
+
+
+
+volumes: 
+
+networks: 
+    - back_end_net
+    - front_end_net
